@@ -5,6 +5,7 @@
   "dependencies": {
     "firebase": "^5.2.0",
     "react": "^16.4.1",
+    "react-checkbox-group": "^4.0.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
     "reactstrap": "^6.3.0"
