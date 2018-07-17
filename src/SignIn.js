@@ -16,6 +16,7 @@ export default class SignInForm extends Component{
     handleSignIn(){
         this.setState({errorMessage:null})
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+        console.log('signed in')
 
     }
 
@@ -23,6 +24,16 @@ export default class SignInForm extends Component{
         this.setState({errorMessage:null})
         firebase.auth().signOut()
     }
+
+    handleChange(event){
+        let field = event.target.name;
+        let value = event.target.value;
+
+        let changes = {};
+        changes[field] = value;
+        this.setState(changes);
+    }
+
 
     render(){
 
@@ -44,7 +55,7 @@ export default class SignInForm extends Component{
                 </div>
     
                 <div className='form-group mb-5'>
-                    <button className="btn btn-primary mr-2" onClick={() => this.handleSignUp()}> Sign In </button> 
+                    <button className="btn btn-primary mr-2" onClick={() => this.handleSignIn()}> Sign In </button> 
                     <button className="btn btn-primary mr-2" onClick={() => this.handleSignOut()}> Sign Out </button> 
                 </div>
             </div>

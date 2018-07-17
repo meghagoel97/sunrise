@@ -5,6 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import {AuthContainer} from './SignUp'
 
 
 var config = {
@@ -17,5 +18,5 @@ var config = {
   };
   firebase.initializeApp(config);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+  ReactDOM.render(<AuthContainer/>, document.getElementById('root'));
 registerServiceWorker();

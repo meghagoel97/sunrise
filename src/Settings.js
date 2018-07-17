@@ -12,8 +12,7 @@ export default class SettingsForm extends Component {
             primaryWeatherLocation: '',
             secondaryWeatherLocation: '',
             newsSites: [],
-            gmail: '',
-            gmailPassword: ''
+            gmail: ''
         }
     }
 
@@ -27,7 +26,9 @@ export default class SettingsForm extends Component {
         console.log(this.state.gmail)
         console.log(this.state.gmailPassword)
 
-        let currentUser = firebase.auth().currentUser
+        let currentUser = this.props.currentUser
+        //let currentUser = firebase.auth().currentUser
+        console.log(currentUser)
 
         if(this.state.newUsername){
             currentUser.updateProfile({displayName: this.state.username})
@@ -41,8 +42,7 @@ export default class SettingsForm extends Component {
             primaryWeatherLocation: this.state.primaryWeatherLocation,
             secondaryWeatherLocation: this.state.secondaryWeatherLocation,
             newsSites: this.state.newsSites,
-            gmail: this.state.gmail,
-            gmailPassword: this.state.gmailPassword
+            gmail: this.state.gmail
         })
     }
 
@@ -118,9 +118,6 @@ export default class SettingsForm extends Component {
                     <h2> Google Calender Log-in </h2>
                     <label> Gmail: </label>
                     <input className="form-control" name='gmail' value={this.state.gmail} onChange={(event) => { this.handleChange(event) }} />
-                    <label> Gmail Password: </label>
-                    <input className="form-control" name='gmailPassword' value={this.state.gmailPassword} onChange={(event) => { this.handleChange(event) }} />
-
                 </div>
 
                 <div className='form-group mb-5'>

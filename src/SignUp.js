@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import App from './App'
  
 export default class SignUpForm extends Component{
     constructor(props){
@@ -59,4 +60,44 @@ export default class SignUpForm extends Component{
         
         );
     }
+}
+
+
+export class AuthContainer extends Component{
+    //state to track current user
+    constructor(props){
+        super(props);
+        this.state = {
+            currentUser: {},
+            userInfo:{}
+        }
+    }
+
+    componentDidMount(){
+        this.removeListenerFunction = firebase.auth().onAuthStateChanged((firebaseUser) =>{
+            if(firebaseUser){
+               this.setState({currentUser:firebaseUser}) 
+               console.log(this.state.currentUser);
+            }
+            else {
+                this.setState({currentUser:undefined});
+            }
+        })
+    }
+
+    componentWillUnmount(){
+        this.removeListenerFunction();
+    }
+
+
+    render() {
+        console.log("in auth ", this.state.currentUser)
+        return (
+            <App currentUser={this.state.currentUser} userInfo={this.state.userInfo} />
+        )
+    }
+
+
+
+
 }
