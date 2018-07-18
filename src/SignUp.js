@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import App from './App'
+
  
 export default class SignUpForm extends Component{
     constructor(props){
@@ -12,14 +13,14 @@ export default class SignUpForm extends Component{
         };
     }
 
-    handleSignUp(){
-        this.setState({errorMessage:null});
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .catch((err) => {
-            console.log(err)
-            this.setState({errorMessage: err.message})
-        })
-    }
+    // handleSignUp(){
+    //     this.setState({errorMessage:null});
+    //     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+    //     .catch((err) => {
+    //         console.log(err)
+    //         this.setState({errorMessage: err.message})
+    //     })
+    // }
 
     handleChange(event){
         let field = event.target.name;
@@ -33,10 +34,10 @@ export default class SignUpForm extends Component{
     render(){
 
         let userMessage= null;
-        if(this.state.user){
-            console.log('hi')
-            userMessage = <div className="alert alert-success"> <h3>Logged in as: {firebase.auth().currentUser}</h3></div>;
-        }
+        // if(){
+        //     console.log('hi')
+        //     userMessage = <div className="alert alert-success"> <h3>Logged in as: {firebase.auth().currentUser}</h3></div>;
+        // }
 
         return(
 
@@ -61,7 +62,7 @@ export default class SignUpForm extends Component{
             </div>
 
             <div className='form-group mb-5'>
-                <button className="btn btn-primary mr-2" onClick={() => this.handleSignUp()}> Create Account </button> 
+                <button className="btn btn-primary mr-2" onClick={() => this.props.howToSignUp(this.state.email, this.state.password)}> Create Account </button> 
             </div>
         </div>
         
@@ -73,46 +74,3 @@ export default class SignUpForm extends Component{
 }
 
 
-export class AuthContainer extends Component{
-    //state to track current user
-    constructor(props){
-        super(props);
-        this.state = {
-            currentUser: {},
-            userInfo:{}
-        }
-    }
-
-    componentDidMount(){
-        this.removeListenerFunction = firebase.auth().onAuthStateChanged((firebaseUser) =>{
-            if(firebaseUser){
-               
-               let userRef = firebase.database().ref('UserPrefs').child(firebaseUser.uid)
-               userRef.on('value', (snapshot)=> {
-                this.setState({
-                    currentUser:firebaseUser,
-                    userInfo:snapshot.val()
-                })
-               })
-            }
-            else {
-                this.setState({currentUser:undefined});
-            }
-        })
-    }
-
-    componentWillUnmount(){
-        this.removeListenerFunction();
-    }
-
-
-    render() {
-        return (
-            <App currentUser={this.state.currentUser} userInfo={this.state.userInfo} />
-        )
-    }
-
-
-
-
-}
