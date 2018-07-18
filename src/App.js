@@ -51,7 +51,7 @@ export default class App extends Component {
               }
               }/>
              <Route path="/News"  render= {(routerProps) => {
-                return <News {...routerProps} currentUser={this.props.currentUser} newsSites={this.props.userInfo.newsSites} />
+                return <News {...routerProps} currentUser={this.props.currentUser} newsSources={this.props.userInfo.newsSites} />
               }
               }/>
               <Route path="/StockDashboard" component={StockDashboard}/>
@@ -62,34 +62,4 @@ export default class App extends Component {
       </div>)
   }
 }
-      /*
-        <SignUpForm />
-        <SignInForm/>
-        <SettingsForm currentUser={this.props.currentUser}/>
-
-
-/* export class App extends Component {
-  render() {
-    let newsSites = {
-      0 : 'the-new-york-times',
-      1 : 'reuters',
-      2 : 'al-jazeera-english'
-    }
-    console.log(newsSites);
-    return (
-      <div>
-        <News newsSources={newsSites}/>
-      </div>
-    );
-  }
-} */
-
-
-
-
-/* //       <Weather city={this.props.city} country={this.props.country}/>
-//     );
-//   }
-// }
- */
 

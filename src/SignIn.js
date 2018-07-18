@@ -16,13 +16,20 @@ export default class SignInForm extends Component{
     handleSignIn(){
         this.setState({errorMessage:null})
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-        console.log('signed in')
+        .catch((error) => {
+            console.log(error);
+            this.setState({errorMessage: error.message});
+        })
 
     }
 
     handleSignOut(){
         this.setState({errorMessage:null})
         firebase.auth().signOut()
+        .catch((err) => {
+            console.log(err);
+            this.setState({errorMessage: err.message})
+        })
     }
 
     handleChange(event){
@@ -37,13 +44,19 @@ export default class SignInForm extends Component{
 
     render(){
 
+        let userMessage= null;
+        if(this.state.user){
+            console.log('hi')
+            userMessage = <div className="alert alert-success"> <h3>Logged in as: {this.state.user}</h3></div>;
+        }
+
         return(
-
-
-
             <div className="container">
                 <h1> Sign In </h1>
-    
+                {this.state.errorMessage && 
+                <p class="alert alert-danger"> {this.state.errorMessage}</p>}
+
+                {userMessage}
                 <div className='form-group'>
                     <label>Enter Email Address: </label>
                     <input className="form-control" name="email" type= "text" value={this.state.email} onChange={(event) => {this.handleChange(event)}}/>
@@ -58,11 +71,7 @@ export default class SignInForm extends Component{
                     <button className="btn btn-primary mr-2" onClick={() => this.handleSignIn()}> Sign In </button> 
                     <button className="btn btn-primary mr-2" onClick={() => this.handleSignOut()}> Sign Out </button> 
                 </div>
-            </div>
-            
-    
-            
-            
+            </div> 
             );
     }
 }
