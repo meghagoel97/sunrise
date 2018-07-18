@@ -146,10 +146,10 @@ export class CreateCards extends Component {
         });
 
 
-        return (<Row>
+        return (<div>
                 <CardGroup> {articles[0]} {articles[1]} {articles[2]} {articles[3]} </CardGroup>
                 <CardGroup> {articles[4]} {articles[5]} {articles[6]} {articles[7]} {articles[8]} {articles[9]} </CardGroup>
-                </Row>
+                </div>
             );
     }
 }
