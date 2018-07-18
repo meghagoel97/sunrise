@@ -11,23 +11,21 @@ export default class SettingsForm extends Component {
             newUsername: '',
             primaryWeatherLocation: '',
             secondaryWeatherLocation: '',
-            newsSites: [],
-            gmail: ''
+            thirdWeatherLocation: '',
+            newsSites: []
         }
     }
 
 
     handleSubmit() {
-        console.log(firebase.auth().currentUser)
+
         console.log(this.state.newUsername);
         console.log(this.state.primaryWeatherLocation);
         console.log(this.state.secondaryWeatherLocation);
         console.log(this.state.newsSites);
-        console.log(this.state.gmail)
-        console.log(this.state.gmailPassword)
 
-        let currentUser = this.props.currentUser
-        //let currentUser = firebase.auth().currentUser
+
+        let currentUser = this.props.currentUser;
         console.log(currentUser)
 
         if(this.state.newUsername){
@@ -41,8 +39,8 @@ export default class SettingsForm extends Component {
             username: this.state.newUsername,
             primaryWeatherLocation: this.state.primaryWeatherLocation,
             secondaryWeatherLocation: this.state.secondaryWeatherLocation,
-            newsSites: this.state.newsSites,
-            gmail: this.state.gmail
+            thirdWeatherLocation: this.state.thirdWeatherLocation,
+            newsSites: this.state.newsSites
         })
     }
 
@@ -76,6 +74,7 @@ export default class SettingsForm extends Component {
 
                 <div className='form-group'>
                     <h2> Weather Settings </h2>
+                    <div><small>Format location using city name and full country name. (Example: Seattle, United States) </small></div>
                     <label>Set Primary Weather Location:</label>
                     <input className="form-control" name="primaryWeatherLocation" value={this.state.primaryWeatherLocation} onChange={(event) => { this.handleChange(event) }} />
                 </div>
@@ -85,6 +84,11 @@ export default class SettingsForm extends Component {
                     <input className="form-control" name="secondaryWeatherLocation" value={this.state.secondaryWeatherLocation} onChange={(event) => { this.handleChange(event) }} />
                 </div>
 
+                <div className='form-group'>
+                    <label>Set Third Weather Location (optional):</label>
+                    <input className="form-control" name="thirdWeatherLocation" value={this.state.thirdWeatherLocation} onChange={(event) => { this.handleChange(event) }} />
+                </div>
+
 
                 <div className='form-group'>
                     <h2>News Sources</h2>
@@ -92,32 +96,37 @@ export default class SettingsForm extends Component {
 
                     <CheckboxGroup name="newSources" onChange={(event) => { this.newsSourcesChanged(event) }}>
 
-                                <Checkbox value="abc"/>
-                                <label>ABC </label>
+                                
+                                <Checkbox value="the-new-york-times"/>
+                                <label>The New York Times </label>
 
-                                <Checkbox value="fox"/>
-                                <label>FOX </label>
+                                <Checkbox value="the-washington-post"/>
+                                <label>The Washington Post </label>
 
-                                <Checkbox value="bbc"/>
-                                <label>BBC </label>
+                                <Checkbox value="the-verge"/>
+                                <label>The Verge</label>
 
-                                <Checkbox value="cnn"/>
-                                <label>CNN </label>
+                                <Checkbox value="wired"/>
+                                <label>Wired </label>
 
-                                <Checkbox value="NY_Times"/>
-                                <label>NY Times </label>
+                                <Checkbox value="vice-news"/>
+                                <label>Vice News </label>
 
-                                <Checkbox value="Washington_Post"/>
-                                <label>Washington Post </label>
+                                <Checkbox value="reuters"/>
+                                <label>Reuters </label>
 
+                                <Checkbox value="al-jazeera-english"/>
+                                <label>Al Jazeera</label>
 
+                                <Checkbox value="the-hindu"/>
+                                <label>The Hindu </label>
+
+                                <Checkbox value="nfl-news"/>
+                                <label>NFL News </label>
+
+                                <Checkbox value="ars-technica"/>
+                                <label>Ars Technica</label>
                     </CheckboxGroup>
-                </div>
-
-                <div className="form-group">
-                    <h2> Google Calender Log-in </h2>
-                    <label> Gmail: </label>
-                    <input className="form-control" name='gmail' value={this.state.gmail} onChange={(event) => { this.handleChange(event) }} />
                 </div>
 
                 <div className='form-group mb-5'>

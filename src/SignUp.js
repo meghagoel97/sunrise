@@ -76,8 +76,14 @@ export class AuthContainer extends Component{
     componentDidMount(){
         this.removeListenerFunction = firebase.auth().onAuthStateChanged((firebaseUser) =>{
             if(firebaseUser){
-               this.setState({currentUser:firebaseUser}) 
-               console.log(this.state.currentUser);
+               
+               let userRef = firebase.database().ref('UserPrefs').child(firebaseUser.uid)
+               userRef.on('value', (snapshot)=> {
+                this.setState({
+                    currentUser:firebaseUser,
+                    userInfo:snapshot.val()
+                })
+               })
             }
             else {
                 this.setState({currentUser:undefined});
@@ -91,7 +97,6 @@ export class AuthContainer extends Component{
 
 
     render() {
-        console.log("in auth ", this.state.currentUser)
         return (
             <App currentUser={this.state.currentUser} userInfo={this.state.userInfo} />
         )
