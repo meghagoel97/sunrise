@@ -4,6 +4,7 @@ import SettingsForm from './Settings'
 import SignInForm from './SignIn'
 import {BrowserRouter, Route, Switch, Link, NavLink, Redirect} from 'react-router-dom'
 import Weather from './Weather.js'
+import News from './News'
 
 export default class App extends Component {
   render() {
@@ -27,6 +28,9 @@ export default class App extends Component {
               <li>
                 <NavLink to='/Weather' className="nav-link"> Weather </NavLink>
               </li>
+              <li>
+                <NavLink to='/News' className="nav-link"> News </NavLink>
+              </li>
             </ul>
           </nav>
 
@@ -38,32 +42,50 @@ export default class App extends Component {
               }/>
               <Route path="/SignIn" component={SignInForm}/>
 
-             <Route path="/Weather"  render= {(routerProps) => {
+             {/* <Route path="/Weather"  render= {(routerProps) => {
                 return <Weather {...routerProps} currentUser={this.props.currentUser} primaryWeather={this.props.userInfo.primaryWeatherLocation} secondaryWeather={this.props.userInfo.secondaryWeatherLocation} thirdWeather={this.props.userInfo.thirdWeatherLocation} />
+              }
+              }/> */}
+             <Route path="/News"  render= {(routerProps) => {
+                return <News {...routerProps} currentUser={this.props.currentUser} newsSites={this.props.userInfo.newsSites} />
               }
               }/>
           </Switch>
 
         </div>
       </BrowserRouter>
-      
-      {/* <div>
+      </div>)
+  }
+}
+      /*
         <SignUpForm />
         <SignInForm/>
         <SettingsForm currentUser={this.props.currentUser}/>
-      </div> */}
+      </div> */
+
+
+/* export class App extends Component {
+  render() {
+    let newsSites = {
+      0 : 'the-new-york-times',
+      1 : 'reuters',
+      2 : 'al-jazeera-english'
+    }
+    console.log(newsSites);
+    return (
+      <div>
+        <News newsSources={newsSites}/>
       </div>
     );
   }
-}
+} */
 
 
 
 
-
-//       <Weather city={this.props.city} country={this.props.country}/>
+/* //       <Weather city={this.props.city} country={this.props.country}/>
 //     );
 //   }
 // }
-
+ */
 

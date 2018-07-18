@@ -7,6 +7,8 @@ import registerServiceWorker from './registerServiceWorker';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import {AuthContainer} from './SignUp'
+import 'firebase/database';
+
 
 
 var config = {
