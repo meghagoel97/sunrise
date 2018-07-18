@@ -58,8 +58,10 @@ export class News extends Component {
     }
   }
 
+ 
+
   render() {
-    let container = <Container> 
+    let container = <div class="news"> 
                         <CreateCards news={this.state['al-jazeera-english']} />
                         <CreateCards news={this.state['reuters']} />
                         <CreateCards news={this.state['the-verge']} />
@@ -70,7 +72,7 @@ export class News extends Component {
                         <CreateCards news={this.state['the-hindu']} />
                         <CreateCards news={this.state['nfl-news']} />
                         <CreateCards news={this.state['ars-technica']} />
-                    </Container>
+                    </div>
     return ( container );
   }
 }
@@ -90,27 +92,38 @@ export class CreateCards extends Component {
             } else {
                 nameURLArray.push(nameURL);
             }
+            let cnt = nameURLArray.length;
+            console.log(cnt);
             if(nameURLArray.length === 1) {
                 let nameArray= nameURL.split('by/');
                 // console.log(nameArray);
                 if(nameArray[0].includes('www')) {
                     name = nameArray[1];
+                    name = name.replace('-', ' ');        
                  } else {
                     name = nameArray[0];
+                    name = name.replace('-', ' ');        
                 }
             } else {
                 nameURLArray.forEach((e) => {
                     let nameArray= e.split('by/');
                     // console.log(nameArray);
                     if(nameArray[0].includes('www')) {
-                        name = name + ', ' + nameArray[1];
+                        name = name + nameArray[1];
+                        name = name.replace('-', ' ');        
                     } else {
-                        name = name + ', ' + nameArray[0];
+                        name = name + nameArray[0];
+                        name = name.replace('-', ' ');        
+                    }
+                    if(cnt > 1) {
+                        name = name + ', ';
+                        cnt--;
                     }
                 });
-            }        
+            }
         } else {
             name = nameURL;
+            name = name.replace('-', ' ');        
         }
         return name
       }
@@ -124,7 +137,7 @@ export class CreateCards extends Component {
             let cn = 0;
             let nameURL = article.author;
             let name = this.manipulateName(nameURL);
-            return (<Card style={{width:"70%", height:"95%"}} className={article.source.id} key={article.title} body>
+            return (<Card style={{width:"70%", height:"98%"}} className={article.source.id} key={article.title} body>
                         <CardTitle> <a href={article.url}> {article.title} </a> </CardTitle>
                         <CardSubtitle> <small> {name} </small> </CardSubtitle>
                         {/* <CardText> {article.description} </CardText> */}
