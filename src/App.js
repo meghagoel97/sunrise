@@ -62,34 +62,4 @@ export default class App extends Component {
       </div>)
   }
 }
-      /*
-        <SignUpForm />
-        <SignInForm/>
-        <SettingsForm currentUser={this.props.currentUser}/>
-
-
-/* export class App extends Component {
-  render() {
-    let newsSites = {
-      0 : 'the-new-york-times',
-      1 : 'reuters',
-      2 : 'al-jazeera-english'
-    }
-    console.log(newsSites);
-    return (
-      <div>
-        <News newsSources={newsSites}/>
-      </div>
-    );
-  }
-} */
-
-
-
-
-/* //       <Weather city={this.props.city} country={this.props.country}/>
-//     );
-//   }
-// }
- */
 

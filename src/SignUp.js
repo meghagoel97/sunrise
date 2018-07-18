@@ -15,8 +15,10 @@ export default class SignUpForm extends Component{
     handleSignUp(){
         this.setState({errorMessage:null});
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-            
-
+        .catch((err) => {
+            console.log(err)
+            this.setState({errorMessage: err.message})
+        })
     }
 
     handleChange(event){
@@ -30,13 +32,21 @@ export default class SignUpForm extends Component{
 
     render(){
 
+        let userMessage= null;
+        if(this.state.user){
+            console.log('hi')
+            userMessage = <div className="alert alert-success"> <h3>Logged in as: {firebase.auth().currentUser}</h3></div>;
+        }
 
         return(
 
-
-
         <div className="container">
             <h1> Sign Up </h1>
+
+            {this.state.errorMessage && 
+                <p class="alert alert-danger"> {this.state.errorMessage}</p>}
+
+            {userMessage}
 
             <div className='form-group'>
                 <label>Enter Email Address: </label>
