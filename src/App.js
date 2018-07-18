@@ -47,7 +47,7 @@ export default class App extends Component {
               }
               }/> */}
              <Route path="/News"  render= {(routerProps) => {
-                return <News {...routerProps} currentUser={this.props.currentUser} newsSites={this.props.userInfo.newsSites} />
+                return <News {...routerProps} currentUser={this.props.currentUser} newsSources={this.props.userInfo.newsSites} />
               }
               }/>
           </Switch>
