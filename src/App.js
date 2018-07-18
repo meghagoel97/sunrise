@@ -5,6 +5,7 @@ import SignInForm from './SignIn'
 import {BrowserRouter, Route, Switch, Link, NavLink, Redirect} from 'react-router-dom'
 import Weather from './Weather.js'
 import News from './News'
+import StockDashboard from './StockDashboard'
 
 export default class App extends Component {
   render() {
@@ -31,6 +32,9 @@ export default class App extends Component {
               <li>
                 <NavLink to='/News' className="nav-link"> News </NavLink>
               </li>
+             <li>
+                <NavLink to='/StockDashboard' className="nav-link"> Stock Dashboard </NavLink>
+              </li>
             </ul>
           </nav>
 
@@ -42,14 +46,15 @@ export default class App extends Component {
               }/>
               <Route path="/SignIn" component={SignInForm}/>
 
-             {/* <Route path="/Weather"  render= {(routerProps) => {
+             <Route path="/Weather"  render= {(routerProps) => {
                 return <Weather {...routerProps} currentUser={this.props.currentUser} primaryWeather={this.props.userInfo.primaryWeatherLocation} secondaryWeather={this.props.userInfo.secondaryWeatherLocation} thirdWeather={this.props.userInfo.thirdWeatherLocation} />
               }
-              }/> */}
+              }/>
              <Route path="/News"  render= {(routerProps) => {
-                return <News {...routerProps} currentUser={this.props.currentUser} newsSources={this.props.userInfo.newsSites} />
+                return <News {...routerProps} currentUser={this.props.currentUser} newsSites={this.props.userInfo.newsSites} />
               }
               }/>
+              <Route path="/StockDashboard" component={StockDashboard}/>
           </Switch>
 
         </div>
@@ -61,7 +66,6 @@ export default class App extends Component {
         <SignUpForm />
         <SignInForm/>
         <SettingsForm currentUser={this.props.currentUser}/>
-      </div> */
 
 
 /* export class App extends Component {
