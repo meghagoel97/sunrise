@@ -22,9 +22,4 @@ var config = {
 ReactDOM.render(<AuthContainer/>, document.getElementById('root'));
 
 
-
-/* 
-let city = "Mumbai";
-let country = "India"
-ReactDOM.render(<App city={city} country={country}/>, document.getElementById('root')); */
 registerServiceWorker();

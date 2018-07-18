@@ -32,6 +32,9 @@ export default class App extends Component {
               <li>
                 <NavLink to='/News' className="nav-link"> News </NavLink>
               </li>
+             <li>
+                <NavLink to='/StockDashboard' className="nav-link"> Stock Dashboard </NavLink>
+              </li>
             </ul>
           </nav>
 
@@ -51,6 +54,7 @@ export default class App extends Component {
                 return <News {...routerProps} currentUser={this.props.currentUser} newsSites={this.props.userInfo.newsSites} />
               }
               }/>
+              <Route path="/StockDashboard" component={StockDashboard}/>
           </Switch>
 
         </div>
