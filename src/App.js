@@ -3,6 +3,7 @@ import SignUpForm from './SignUp';
 import SettingsForm from './Settings'
 import SignInForm from './SignIn'
 import {BrowserRouter, Route, Switch, Link, NavLink, Redirect} from 'react-router-dom'
+import Weather from './Weather.js'
 
 export default class App extends Component {
   render() {
@@ -47,3 +48,15 @@ export default class App extends Component {
     );
   }
 }
+
+
+
+
+
+//       <Weather city={this.props.city} country={this.props.country}/>
+//     );
+//   }
+// }
+
+export default App;
+
