@@ -13,18 +13,6 @@ export default class SignInForm extends Component{
     }
     
 
-    handleSignIn(){
-        this.setState({errorMessage:null})
-        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-        console.log('signed in')
-
-    }
-
-    handleSignOut(){
-        this.setState({errorMessage:null})
-        firebase.auth().signOut()
-    }
-
     handleChange(event){
         let field = event.target.name;
         let value = event.target.value;
@@ -37,13 +25,14 @@ export default class SignInForm extends Component{
 
     render(){
 
+
         return(
-
-
-
             <div className="container">
                 <h1> Sign In </h1>
-    
+                {this.state.errorMessage && 
+                <p class="alert alert-danger"> {this.state.errorMessage}</p>}
+
+
                 <div className='form-group'>
                     <label>Enter Email Address: </label>
                     <input className="form-control" name="email" type= "text" value={this.state.email} onChange={(event) => {this.handleChange(event)}}/>
@@ -55,14 +44,10 @@ export default class SignInForm extends Component{
                 </div>
     
                 <div className='form-group mb-5'>
-                    <button className="btn btn-primary mr-2" onClick={() => this.handleSignIn()}> Sign In </button> 
-                    <button className="btn btn-primary mr-2" onClick={() => this.handleSignOut()}> Sign Out </button> 
+                    <button className="btn btn-primary mr-2" onClick={() => this.props.howToSignIn(this.state.email, this.state.password)}> Sign In </button> 
+                    <button className="btn btn-primary mr-2" onClick={() => this.props.howToSignOut()}> Sign Out </button> 
                 </div>
-            </div>
-            
-    
-            
-            
+            </div> 
             );
     }
 }

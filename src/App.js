@@ -5,6 +5,7 @@ import SignInForm from './SignIn'
 import { BrowserRouter, Route, Switch, Link, NavLink, Redirect } from 'react-router-dom'
 import Weather from './Weather.js'
 import News from './News'
+import StockDashboard from './StockDashboard'
 
 export default class App extends Component {
   render() {
@@ -20,10 +21,13 @@ export default class App extends Component {
                   <NavLink exact to='/' className="nav-link"> Home </NavLink>
                 </li>
                 <li>
-                  <NavLink to='/Settings' className="nav-link"> Settings </NavLink>
+                  <NavLink to='/SignUp' className="nav-link"> Sign Up </NavLink>
                 </li>
                 <li>
-                  <NavLink to='/SignIn' className="nav-link"> Sign-In </NavLink>
+                  <NavLink to='/SignIn' className="nav-link"> Sign In </NavLink>
+                </li>
+                <li>
+                  <NavLink to='/Settings' className="nav-link"> Settings </NavLink>
                 </li>
                 <li>
                   <NavLink to='/Weather' className="nav-link"> Weather </NavLink>
@@ -31,25 +35,38 @@ export default class App extends Component {
                 <li>
                   <NavLink to='/News' className="nav-link"> News </NavLink>
                 </li>
+                <li>
+                  <NavLink to='/StockDashboard' className="nav-link"> Stock Dashboard </NavLink>
+                </li>
+                <li>
+                  <button className="btn btn-primary mr-2" onClick={() => this.props.howToSignOut()}> Sign Out </button>
+                </li>
               </ul>
             </nav>
 
             <Switch>
-              <Route exact path="/" component={SignUpForm} />
+              <Route exact path="/"  />
+              <Route path="/SignUp" render={(routerProps) => {
+                return <SignUpForm {...routerProps} currentUser={this.props.currentUser} howToSignUp={this.props.howToSignUp} />
+              }
+              } />
               <Route path="/Settings" render={(routerProps) => {
                 return <SettingsForm {...routerProps} currentUser={this.props.currentUser} />
               }
               } />
-              <Route path="/SignIn" component={SignInForm} />
-
+              <Route path="/SignIn" render={(routerProps) => {
+                return <SignInForm {...routerProps} currentUser={this.props.currentUser} howToSignIn={this.props.howToSignIn} howToSignOut={this.props.howToSignOut} />
+              }
+              } />
               <Route path="/Weather" render={(routerProps) => {
                 return <Weather {...routerProps} currentUser={this.props.currentUser} primaryWeather={this.props.userInfo.primaryWeatherLocation} secondaryWeather={this.props.userInfo.secondaryWeatherLocation} thirdWeather={this.props.userInfo.thirdWeatherLocation} />
               }
               } />
               <Route path="/News" render={(routerProps) => {
-                return <News {...routerProps} currentUser={this.props.currentUser} newsSites={this.props.userInfo.newsSites} />
+                return <News {...routerProps} currentUser={this.props.currentUser} newsSources={this.props.userInfo.newsSites} />
               }
               } />
+              <Route path="/StockDashboard" component={StockDashboard} />
             </Switch>
 
           </div>
@@ -57,35 +74,4 @@ export default class App extends Component {
       </div>)
   }
 }
-      /*
-        <SignUpForm />
-        <SignInForm/>
-        <SettingsForm currentUser={this.props.currentUser}/>
-      </div> */
-
-
-/* export class App extends Component {
-  render() {
-    let newsSites = {
-      0 : 'the-new-york-times',
-      1 : 'reuters',
-      2 : 'al-jazeera-english'
-    }
-    console.log(newsSites);
-    return (
-      <div>
-        <News newsSources={newsSites}/>
-      </div>
-    );
-  }
-} */
-
-
-
-
-/* //       <Weather city={this.props.city} country={this.props.country}/>
-//     );
-//   }
-// }
- */
 
