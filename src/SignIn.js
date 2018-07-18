@@ -13,25 +13,6 @@ export default class SignInForm extends Component{
     }
     
 
-    handleSignIn(){
-        this.setState({errorMessage:null})
-        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-        .catch((error) => {
-            console.log(error);
-            this.setState({errorMessage: error.message});
-        })
-
-    }
-
-    handleSignOut(){
-        this.setState({errorMessage:null})
-        firebase.auth().signOut()
-        .catch((err) => {
-            console.log(err);
-            this.setState({errorMessage: err.message})
-        })
-    }
-
     handleChange(event){
         let field = event.target.name;
         let value = event.target.value;
@@ -44,11 +25,6 @@ export default class SignInForm extends Component{
 
     render(){
 
-        let userMessage= null;
-        if(this.state.user){
-            console.log('hi')
-            userMessage = <div className="alert alert-success"> <h3>Logged in as: {this.state.user}</h3></div>;
-        }
 
         return(
             <div className="container">
@@ -56,7 +32,7 @@ export default class SignInForm extends Component{
                 {this.state.errorMessage && 
                 <p class="alert alert-danger"> {this.state.errorMessage}</p>}
 
-                {userMessage}
+
                 <div className='form-group'>
                     <label>Enter Email Address: </label>
                     <input className="form-control" name="email" type= "text" value={this.state.email} onChange={(event) => {this.handleChange(event)}}/>
@@ -68,8 +44,8 @@ export default class SignInForm extends Component{
                 </div>
     
                 <div className='form-group mb-5'>
-                    <button className="btn btn-primary mr-2" onClick={() => this.handleSignIn()}> Sign In </button> 
-                    <button className="btn btn-primary mr-2" onClick={() => this.handleSignOut()}> Sign Out </button> 
+                    <button className="btn btn-primary mr-2" onClick={() => this.props.howToSignIn(this.state.email, this.state.password)}> Sign In </button> 
+                    <button className="btn btn-primary mr-2" onClick={() => this.props.howToSignOut()}> Sign Out </button> 
                 </div>
             </div> 
             );
