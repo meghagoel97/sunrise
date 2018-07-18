@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Card, Container, CardTitle, CardText, CardSubtitle, Row, Col } from 'reactstrap';
+import './News.css'
+import { Card, Container, CardTitle, CardText, CardSubtitle, CardGroup, CardFooter, CardDeck,Row, Col } from 'reactstrap';
 import 'whatwg-fetch';
-
 
 export class News extends Component {
   constructor(props) {
@@ -118,22 +118,25 @@ export class CreateCards extends Component {
     // passed in an array of Articles via props
     render() {
         let data = this.props.news;
+        let count = 0;
         let articles = data.map((article) => {
+            count++;
+            let cn = 0;
             let nameURL = article.author;
             let name = this.manipulateName(nameURL);
-            return (<Card key={article.title} body>
+            return (<Card style={{width:"70%", height:"95%"}} className={article.source.id} key={article.title} body>
                         <CardTitle> <a href={article.url}> {article.title} </a> </CardTitle>
-                        <CardSubtitle> <small> Source: {article.source.name}</small> </CardSubtitle>
-                        <CardText> <small> {name} </small> </CardText>
-                        <CardText> {article.description} </CardText>
+                        <CardSubtitle> <small> {name} </small> </CardSubtitle>
+                        {/* <CardText> {article.description} </CardText> */}
+                        {/* <CardText> <small className='text-muted'> Source: {article.source.name} </small> </CardText> */}
                     </Card>);
         });
 
 
-        return (
-            <Container>
-                {articles}
-            </Container>
-        );
+        return (<Row>
+                <CardGroup> {articles[0]} {articles[1]} {articles[2]} {articles[3]} </CardGroup>
+                <CardGroup> {articles[4]} {articles[5]} {articles[6]} {articles[7]} {articles[8]} {articles[9]} </CardGroup>
+                </Row>
+            );
     }
 }
