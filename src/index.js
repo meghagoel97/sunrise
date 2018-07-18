@@ -5,6 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 var config = {
