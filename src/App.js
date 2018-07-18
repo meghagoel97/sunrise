@@ -14,7 +14,7 @@ export default class App extends Component {
       <div>
         <BrowserRouter>
           <div className="container">
-            <h1> Sunrise </h1>
+            <h1 className="title"> Sunrise </h1>
             <nav>
               <ul className='nav'>
                 <li>
