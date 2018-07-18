@@ -9,8 +9,6 @@ import 'firebase/auth';
 import {AuthContainer} from './SignUp'
 import 'firebase/database';
 
-
-
 var config = {
     apiKey: "AIzaSyAYQnow1D-GsGFX3hsHJ1fKrEPNaQB-D5o",
     authDomain: "info343-sunrise.firebaseapp.com",
