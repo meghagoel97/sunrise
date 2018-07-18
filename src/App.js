@@ -24,6 +24,9 @@ export default class App extends Component {
               <li>
                 <NavLink to='/SignIn' className="nav-link"> Sign-In </NavLink>
               </li>
+              <li>
+                <NavLink to='/Weather' className="nav-link"> Weather </NavLink>
+              </li>
             </ul>
           </nav>
 
@@ -34,6 +37,11 @@ export default class App extends Component {
               }
               }/>
               <Route path="/SignIn" component={SignInForm}/>
+
+             <Route path="/Weather"  render= {(routerProps) => {
+                return <Weather {...routerProps} currentUser={this.props.currentUser} primaryWeather={this.props.userInfo.primaryWeatherLocation} secondaryWeather={this.props.userInfo.secondaryWeatherLocation} thirdWeather={this.props.userInfo.thirdWeatherLocation} />
+              }
+              }/>
           </Switch>
 
         </div>
@@ -58,5 +66,4 @@ export default class App extends Component {
 //   }
 // }
 
-export default App;
 
