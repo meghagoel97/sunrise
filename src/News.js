@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './News.css'
-import { Card, Container, CardTitle, CardText, CardSubtitle, CardGroup, CardFooter, CardDeck,Row, Col } from 'reactstrap';
+import { Card, Container, CardTitle, CardText, CardSubtitle, CardGroup,Row, Col } from 'reactstrap';
 import 'whatwg-fetch';
 
 export class News extends Component {
