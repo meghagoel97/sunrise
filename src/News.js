@@ -134,6 +134,7 @@ export class CreateCards extends Component {
       }
 
     // passed in an array of Articles via props
+    // https://www.npmjs.com/package/react-tooltip
     render() {
         let data = this.props.news;
         let articles = data.map((article) => {
