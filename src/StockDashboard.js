@@ -5,7 +5,6 @@ import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } fro
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 
-
 const key = 'R53L4WV6XQ6KQUNO'
 
 
