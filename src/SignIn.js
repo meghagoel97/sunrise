@@ -29,8 +29,8 @@ export default class SignInForm extends Component{
         return(
             <div className="container">
                 <h1> Sign In </h1>
-                {this.state.errorMessage && 
-                <p class="alert alert-danger"> {this.state.errorMessage}</p>}
+                {this.props.errorMessage && 
+                <p className="alert alert-danger"> {this.props.errorMessage}</p>}
 
 
                 <div className='form-group'>

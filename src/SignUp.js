@@ -39,13 +39,15 @@ export default class SignUpForm extends Component{
         //     userMessage = <div className="alert alert-success"> <h3>Logged in as: {firebase.auth().currentUser}</h3></div>;
         // }
 
+        console.log(this.state);
+
         return(
 
         <div className="container">
             <h1> Sign Up </h1>
 
-            {this.state.errorMessage && 
-                <p class="alert alert-danger"> {this.state.errorMessage}</p>}
+            {this.props.errorMessage && 
+                <p className="alert alert-danger"> {this.props.errorMessage}</p>}
 
             {userMessage}
 

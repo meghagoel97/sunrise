@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Weather.css';
+import './css/Weather.css';
 import 'whatwg-fetch';
 import {
   Button, Card, Row, Col, CardImg, CardLink, CardText, CardBody,
