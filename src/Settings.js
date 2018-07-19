@@ -75,17 +75,17 @@ export default class SettingsForm extends Component {
                 <div className='form-group'>
                     <h2> Weather Settings </h2>
                     <div><small>Format location using city name and full country name. (Example: Seattle, United States) </small></div>
-                    <label>Set Primary Weather Location:</label>
+                    <label>Set Primary Weather Location (Required):</label>
                     <input className="form-control" name="primaryWeatherLocation" value={this.state.primaryWeatherLocation} onChange={(event) => { this.handleChange(event) }} />
                 </div>
 
                 <div className='form-group'>
-                    <label>Set Secondary Weather Location (optional):</label>
+                    <label>Set Secondary Weather Location (Required):</label>
                     <input className="form-control" name="secondaryWeatherLocation" value={this.state.secondaryWeatherLocation} onChange={(event) => { this.handleChange(event) }} />
                 </div>
 
                 <div className='form-group'>
-                    <label>Set Third Weather Location (optional):</label>
+                    <label>Set Third Weather Location (Required):</label>
                     <input className="form-control" name="thirdWeatherLocation" value={this.state.thirdWeatherLocation} onChange={(event) => { this.handleChange(event) }} />
                 </div>
 

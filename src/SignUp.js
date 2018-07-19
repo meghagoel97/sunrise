@@ -13,14 +13,6 @@ export default class SignUpForm extends Component{
         };
     }
 
-    // handleSignUp(){
-    //     this.setState({errorMessage:null});
-    //     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-    //     .catch((err) => {
-    //         console.log(err)
-    //         this.setState({errorMessage: err.message})
-    //     })
-    // }
 
     handleChange(event){
         let field = event.target.name;
@@ -67,10 +59,7 @@ export default class SignUpForm extends Component{
                 <button className="btn btn-primary mr-2" onClick={() => this.props.howToSignUp(this.state.email, this.state.password)}> Create Account </button> 
             </div>
         </div>
-        
-
-        
-        
+         
         );
     }
 }

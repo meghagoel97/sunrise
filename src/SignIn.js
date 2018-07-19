@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 
 export default class SignInForm extends Component{
@@ -35,7 +34,7 @@ export default class SignInForm extends Component{
                 <h1> Sign In </h1>
 
                 {userMessage}
-                
+
                 {this.props.errorMessage && 
                 <p className="alert alert-danger"> {this.props.errorMessage}</p>}
 
