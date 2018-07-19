@@ -28,29 +28,29 @@ export default class SignUpForm extends Component{
 
         let changes = {};
         changes[field] = value;
-        this.setState(changes);
+        this.setState(changes); 
     }
 
     render(){
 
-        let userMessage= null;
-        // if(){
-        //     console.log('hi')
-        //     userMessage = <div className="alert alert-success"> <h3>Logged in as: {firebase.auth().currentUser}</h3></div>;
-        // }
+        let userMessage = null;
+        if(this.props.currentUser) {
+          userMessage = <div className="alert alert-success"><h3>Currently logged in as {this.props.currentUser.email}</h3></div>;
+        }
 
-        console.log(this.state);
+
 
         return(
 
         <div className="container">
             <h1> Sign Up </h1>
 
+            <div>{userMessage}</div>
+
             {this.props.errorMessage && 
                 <p className="alert alert-danger"> {this.props.errorMessage}</p>}
 
-            {userMessage}
-
+            
             <div className='form-group'>
                 <label>Enter Email Address: </label>
                 <input className="form-control" name="email" type= "text" value={this.state.email} onChange={(event) => {this.handleChange(event)}}/>

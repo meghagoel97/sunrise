@@ -25,10 +25,17 @@ export default class SignInForm extends Component{
 
     render(){
 
+        let userMessage = null;
+        if(this.props.currentUser) {
+          userMessage = <div className="alert alert-success"><h3>Logged in as {this.props.currentUser.email}</h3></div>;
+        }
 
         return(
             <div className="container">
                 <h1> Sign In </h1>
+
+                {userMessage}
+                
                 {this.props.errorMessage && 
                 <p className="alert alert-danger"> {this.props.errorMessage}</p>}
 
