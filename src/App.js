@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch, Link, NavLink, Redirect } from 'react-rou
 import Weather from './Weather.js'
 import News from './News'
 import StockDashboard from './StockDashboard'
+import Home from './Home'
 
 export default class App extends Component {
   render() {
@@ -45,7 +46,7 @@ export default class App extends Component {
             </nav>
 
             <Switch>
-              <Route exact path="/"  />
+              <Route exact path="/"  currentUser={this.props.currentUser} component={Home} />
               <Route path="/SignUp" render={(routerProps) => {
                 return <SignUpForm {...routerProps} currentUser={this.props.currentUser} howToSignUp={this.props.howToSignUp} errorMessage={this.props.signUpErrorMessage} />
               }
