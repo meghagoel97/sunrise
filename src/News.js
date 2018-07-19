@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactTooltip from 'react-tooltip';
 import './css/News.css'
 import { Card, CardTitle, CardBody, CardSubtitle, CardGroup, Tooltip } from 'reactstrap';
 import 'whatwg-fetch';
@@ -20,13 +21,9 @@ export class News extends Component {
       error: ''
         };
   }
-  // DONT FORGET ATTRIBUTION LINK FOR NEWS API
+  // DONT FORGET ATTRIBUTION LINK FOR NEWS API: https://newsapi.org/
   download(newsSource) {
     let src = newsSource;
-    // need to get today's date: 
-    //https://www.codexworld.com/how-to/get-current-date-time-using-javascript/
-    let dt = new Date();
-    let today = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate();
     // sort by popularity
     let url2 = 'https://newsapi.org/v2/top-headlines?sources=' + newsSource + '&sortBy=popularity&apiKey=f1820d94c3744a42958a0465be7d21e5';
     let req2 = new Request(url2);
@@ -66,7 +63,11 @@ export class News extends Component {
                         <CreateCards news={this.state['nfl-news']} />
                         <CreateCards news={this.state['ars-technica']} />
                     </div>
-    return ( container );
+    let main = <div>
+                    {container}
+                    <footer> Top Headlines pulled from various websites courtesy <a href='https://newsapi.org/'> News API.</a> </footer>
+               </div>
+    return ( main );
   }
 }
 
@@ -139,11 +140,11 @@ export class CreateCards extends Component {
             let nameURL = article.author;
             let name = this.manipulateName(nameURL);
             return (<Card className='d-flex' className={article.source.id} key={article.title}>
-                    <CardBody id='ToolTipSource'>
+                    <CardBody data-tip={article.source.name}>
                         <CardTitle> <a href={article.url}> {article.title} </a> </CardTitle>
                         <CardSubtitle> <small> {name} </small> </CardSubtitle>
                     </CardBody>
-                    <Tooltip placement='bottom' isOpen={this.state.toolTipOpen} target='ToolTipSource'> Source: {article.source.name} </Tooltip>
+                    <ReactTooltip place="right" type="dark" effect="solid"/>
                     </Card>
                     );
 });
