@@ -11,7 +11,9 @@ export default class AuthContainer extends Component{
         super(props);
         this.state = {
             currentUser: undefined,
-            userInfo:undefined
+            userInfo:undefined,
+            signInErrorMessage: undefined,
+            signUpErrorMessage: undefined
         }
     }
 
@@ -38,22 +40,22 @@ export default class AuthContainer extends Component{
     }
 
     handleSignUp(email, password){
-        this.setState({errorMessage:null});
-        console.log('signing up')
+        this.setState({signUpErrorMessage:null});
+        console.log('signing up', email, password);
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .catch((err) => {
             console.log(err)
-            this.setState({errorMessage: err.message})
+            this.setState({signUpErrorMessage: err.message})
         })
     }
 
     handleSignIn(email, password){
-        this.setState({errorMessage:null})
+        this.setState({signInErrorMessage:null})
         console.log('signing in')
         firebase.auth().signInWithEmailAndPassword(email, password)
         .catch((error) => {
             console.log(error);
-            this.setState({errorMessage: error.message});
+            this.setState({signInErrorMessage: error.message});
         })
 
     }
@@ -70,7 +72,7 @@ export default class AuthContainer extends Component{
 
     render() {
         return (
-            <App howToSignOut={() => this.handleSignOut()} howToSignIn={() =>  this.handleSignIn()} howToSignUp={() =>  this.handleSignUp()}  currentUser={this.state.currentUser} userInfo={this.state.userInfo} />
+            <App howToSignOut={() => this.handleSignOut()} howToSignIn={(e,p) =>  this.handleSignIn(e,p)} howToSignUp={(e, p) =>  this.handleSignUp(e, p)}  currentUser={this.state.currentUser} userInfo={this.state.userInfo} signInErrorMessage={this.state.signInErrorMessage} signUpErrorMessage={this.state.signUpErrorMessage} />
         )
     }
 

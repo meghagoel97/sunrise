@@ -1,6 +1,6 @@
 body{
     background-color: white;
-    background-image: none;
+    background-image: url('./img/cleanBlue.jpg')
 }
 
 .reuters {
@@ -45,9 +45,13 @@ body{
 
 a{
     color: rgb(28, 27, 27);
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
-CardSubtitle {
-    color: rgb(75, 73, 73);
+.card-subtitle {
+    /* color: rgb(75, 73, 73); */
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
 
 }

@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch, Link, NavLink, Redirect } from 'react-rou
 import Weather from './Weather.js'
 import News from './News'
 import StockDashboard from './StockDashboard'
+import Home from './Home'
 
 export default class App extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class App extends Component {
       <div>
         <BrowserRouter>
           <div className="container">
-            <h1> Sunrise </h1>
+            <h1 className="title"> Sunrise </h1>
             <nav>
               <ul className='nav'>
                 <li>
@@ -45,9 +46,9 @@ export default class App extends Component {
             </nav>
 
             <Switch>
-              <Route exact path="/"  />
+              <Route exact path="/"  currentUser={this.props.currentUser} component={Home} />
               <Route path="/SignUp" render={(routerProps) => {
-                return <SignUpForm {...routerProps} currentUser={this.props.currentUser} howToSignUp={this.props.howToSignUp} />
+                return <SignUpForm {...routerProps} currentUser={this.props.currentUser} howToSignUp={this.props.howToSignUp} errorMessage={this.props.signUpErrorMessage} />
               }
               } />
               <Route path="/Settings" render={(routerProps) => {
@@ -55,7 +56,7 @@ export default class App extends Component {
               }
               } />
               <Route path="/SignIn" render={(routerProps) => {
-                return <SignInForm {...routerProps} currentUser={this.props.currentUser} howToSignIn={this.props.howToSignIn} howToSignOut={this.props.howToSignOut} />
+                return <SignInForm {...routerProps} currentUser={this.props.currentUser} howToSignIn={this.props.howToSignIn} howToSignOut={this.props.howToSignOut} errorMessage={this.props.signInErrorMessage} />
               }
               } />
               <Route path="/Weather" render={(routerProps) => {
