@@ -5,6 +5,7 @@ import App from './App'
 
 
 
+
 export default class AuthContainer extends Component{
     constructor(props){
         super(props);
@@ -46,6 +47,8 @@ export default class AuthContainer extends Component{
             console.log(err)
             this.setState({signUpErrorMessage: err.message})
         })
+
+        
     }
 
     handleSignIn(email, password){

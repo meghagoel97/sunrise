@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { Redirect } from 'react-router-dom'
 import App from './App'
 
  
@@ -27,7 +28,7 @@ export default class SignUpForm extends Component{
 
         let userMessage = null;
         if(this.props.currentUser) {
-          userMessage = <div className="alert alert-success"><h3>Currently logged in as {this.props.currentUser.email}</h3></div>;
+          userMessage = <div className="alert alert-success"><h3>Currently logged in as {this.props.currentUser.email}</h3><small>Go to Settings to modify your account preferences</small></div>;
         }
 
 
