@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/index.css';
 import registerServiceWorker from './registerServiceWorker';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
+import 'firebase/database';
+import AuthContainer from'./AuthContainer'
 
 var config = {
     apiKey: "AIzaSyAYQnow1D-GsGFX3hsHJ1fKrEPNaQB-D5o",
@@ -17,5 +18,7 @@ var config = {
   };
   firebase.initializeApp(config);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AuthContainer/>, document.getElementById('root'));
+
+
 registerServiceWorker();
